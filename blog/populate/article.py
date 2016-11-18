@@ -2,6 +2,7 @@ from populate import base
 from article.models import Article, Comment
 import random
 
+
 def populate():
     print('Populating Article and Comment...', end='')
     titles = ['如何像電腦科學家一樣思考', '10 分鐘內學好 Python', '簡單學習 Django']
