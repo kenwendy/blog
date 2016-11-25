@@ -1,0 +1,24 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<title>部落格</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+</head>
+<body>
+<h2>歡迎來到我的書籍區</h2>
+<br>
+
+{% for book in books %}
+   <h3>書名：{{ book.title }}</h3>
+   <p>作者：{{ book.author }}</p>
+   <p>出版商：{{ book.publisher }}</p>
+   <p>出版日期：{{ book.pubDate|date:'Y-m-d' }}</p>
+   <p>版次：{{ book.version }}</p>
+   <p>售價：{{ book.price }}</p>
+{% endfor %}
+<br>
+</body>
+</html>
+
