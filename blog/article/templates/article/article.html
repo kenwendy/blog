@@ -11,6 +11,8 @@
 {% include 'main/menu.html' %}
 <h2>歡迎來到我的部落格</h2>
 <br>
+<a class="btn" href="{% url 'article:articleCreate' %}">新增文章</a>
+<br>
 {% for items in itemArray %}
   {% for item in items %}
     {% if forloop.first %}
