@@ -6,17 +6,24 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 <link rel="stylesheet" href="{% static 'article/css/article.css' %}">
+<link rel="icon" href="{% static 'main/img/favicon.ico' %} " type="image/x-icon">
 </head>
 <body>
 {% include 'main/menu.html' %}
 <h2>歡迎來到我的部落格</h2>
-<br>
-<a class="btn" href="{% url 'article:articleCreate' %}">新增文章</a>
-<br>
+{% include 'main/messages.html' %}
+{% include 'article/searchForm.html' %}
+
+<p class="inlineBlock"><a class="btn" href="{% url 'article:articleCreate' %}">新增文章</a></p>
+<br><br><hr>
 {% for items in itemArray %}
   {% for item in items %}
     {% if forloop.first %}
-      <h3>{{ item.title }}</h3>
+      <h3 class="inlineBlock"><a href="{% url 'article:articleRead' item.id %}">{{ item.title }}</a></h3>
+      <form class="inlineBlock" method="post" action="{% url 'article:articleDelete' item.id %}">
+        {% csrf_token %}
+        <input class="btn" type="submit" value="刪除">
+      </form>
       <p>發表時間:{{ item.pubDateTime|date:'Y-m-d H:i' }}</p>
       <div class=articleContent>{{ item.content|linebreaks|truncatechars_html:30 }}</div>
       <p>瀏覽次數:{{ item.views }},按讚:{{ item.likes }}</p>
