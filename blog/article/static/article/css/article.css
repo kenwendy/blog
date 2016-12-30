@@ -8,7 +8,12 @@
   font-size: 0.8em;
 }
 
-.commentTime {
+.commentTime, .commentAuthor {
   font-size: 0.6em;
   color: gray;
+}
+
+.commentAuthor {
+  font-weight: bold;
+  color: #365899;
 }

@@ -1,18 +1,6 @@
-<!doctype html>
-{% load staticfiles %}
-<html>
-<head>
-<title>部落格</title><!doctype html>
-{% load staticfiles %}
-<html>
-<head>
-<title>部落格</title>
-<meta charset="utf-8">
-<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
-</head>
-<body>
-{% include 'main/menu.html' %}
-<h1>歡迎來到我的部落格</h1>
+{% extends 'main/base.html' %}
+{% block heading %}查詢{% endblock %}
+{% block content %}
 {% include 'article/searchForm.html' %}
 
 <br><br><hr>
@@ -29,5 +17,5 @@
     {% endfor %}
   </table>
 {% endif %}
-</body>
-</html>
+{% endblock %}
+

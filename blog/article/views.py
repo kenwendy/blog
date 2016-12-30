@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models.query_utils import Q
 
+
 from article.models import Article, Comment
 from article.forms import ArticleForm
 

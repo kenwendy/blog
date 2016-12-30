@@ -1,16 +1,10 @@
-<!doctype html>
+{% extends 'main/base.html' %}
 {% load staticfiles %}
-<html>
-<head>
-<title>部落格</title>
-<meta charset="utf-8">
-<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+{% block css %}
 <link rel="stylesheet" href="{% static 'article/css/article.css' %}">
-</head>
-<body>
-{% include 'main/menu.html' %}
-
-{% include 'main/messages.html' %}
+{% endblock %}
+{% block heading %}閱讀文章{% endblock %}
+{% block content %}
 <h3 class="inlineBlock">{{ article.title }}</h3>
 {% include 'main/messages.html' %}
 <a class="btn inline" href="{% url 'article:articleUpdate' article.id %}">修改</a>
@@ -19,9 +13,9 @@
 <p>讚:{{ article.likes }}</p>
 {% for comment in comments %}
   <p>
+    <span class=commentAuthor>{{ comment.user.profile.fullName }}</span>
     <span class=comment>{{ comment.content }}</span><br>
     <span class=commentTime>{{ comment.pubDateTime|date:'m 月 d 日 H:i'}}</span>
   </p>
 {% endfor %}
-</body>
-</html>
+{% endblock %}
